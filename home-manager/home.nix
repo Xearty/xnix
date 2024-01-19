@@ -47,10 +47,9 @@
     };
   };
 
-  # TODO: Set your username
   home = {
-    username = "your-username";
-    homeDirectory = "/home/your-username";
+    username = "xearty";
+    homeDirectory = "/home/xearty";
   };
 
   # Add stuff for your user as you see fit:
@@ -59,7 +58,49 @@
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+  # programs.git.enable = true;
+
+  home.packages = with pkgs; [
+    firefox
+    neovim
+  ];
+
+  programs.git = {
+    enable = true;
+    userName = "Xearty";
+    userEmail = "xeartybg@gmail.com";
+  };
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      ll = "ls -l";
+    };
+    history = {
+      size = 10000;
+      path = "${config.xdg.dataHome}/zsh/history";
+    };
+    zplug = {
+      enable = true;
+      plugins = [
+        { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
+      ];
+    };
+    initExtra = "";
+  };
+
+  programs.kitty = {
+    enable = true;
+    theme = "Catppuccin-Mocha";
+    extraConfig = ''
+      background_opacity 0.9
+      font_family Liberation Mono
+    '';
+  };
+
+  programs.starship = {
+    enable = true;
+    settings = {};
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
