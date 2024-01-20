@@ -60,41 +60,34 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    # Compilers, VMs, builds systems
+    rustup nim gcc llvm libllvm zig ghc ocaml
+    gnumake cmake
+
+    # Language servers
+    zls
+
+    # Libs
+    openssl
+    openssl.dev
+
+    # Shell utils
+    fzf ripgrep direnv unzip doas file
+    neofetch xclip pkg-config
+
+    # Text editors
+    neovim neovide vscode
+
     firefox
-    neovim
-    fzf
-    ripgrep
-    direnv
-    ocaml
-    gnumake
-    cmake
-    xclip
     discord
-    neofetch
     qbittorrent
     mpv
     libreoffice
     bluedevil
-    gcc
     nerdfonts
-    nim
-    neovide
-    llvm
-    libllvm
-    doas
-    unzip
-    rustup
-    file
     # rust-analyzer
-    zig
-    zls
-    ghc
     # clang
     # clang-tools
-    vscode
-    pkg-config
-    openssl
-    openssl.dev
     xournal
   ];
 
