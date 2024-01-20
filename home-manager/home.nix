@@ -58,11 +58,44 @@
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  # programs.git.enable = true;
 
   home.packages = with pkgs; [
     firefox
     neovim
+    fzf
+    ripgrep
+    direnv
+    ocaml
+    gnumake
+    cmake
+    xclip
+    discord
+    neofetch
+    qbittorrent
+    mpv
+    libreoffice
+    bluedevil
+    gcc
+    nerdfonts
+    nim
+    neovide
+    llvm
+    libllvm
+    doas
+    unzip
+    rustup
+    file
+    # rust-analyzer
+    zig
+    zls
+    ghc
+    # clang
+    # clang-tools
+    vscode
+    pkg-config
+    openssl
+    openssl.dev
+    xournal
   ];
 
   programs.git = {
