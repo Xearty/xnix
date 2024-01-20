@@ -13,6 +13,10 @@
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Nix ld
+    nix-ld.url = "github:Mic92/nix-ld";
+    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
+
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
 
@@ -25,6 +29,7 @@
     self,
     nixpkgs,
     home-manager,
+    nix-ld,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -60,10 +65,14 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       shadow = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
         specialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main nixos configuration file <
           ./nixos/configuration.nix
+
+          nix-ld.nixosModules.nix-ld
+          { programs.nix-ld.dev.enable = true; }
         ];
       };
     };
