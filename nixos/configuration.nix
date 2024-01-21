@@ -64,6 +64,7 @@
       value.source = value.flake;
     })
     config.nix.registry;
+  nix.package = pkgs.nixUnstable;
 
   nix.settings = {
     # Enable flakes and new 'nix' command
