@@ -1,12 +1,11 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, ...
 }: {
   # You can import other home-manager modules here
   imports = [
@@ -27,6 +26,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
+      inputs.nixd.overlays.default
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -61,23 +61,41 @@
 
   home.packages = with pkgs; [
     # Compilers, VMs, builds systems
-    rustup nim llvm clang libllvm zig ghc ocaml
-    gnumake cmake
+    rustup
+    nim
+    llvm
+    clang
+    libllvm
+    zig
+    ghc
+    ocaml
+    gnumake
+    cmake
     clang-tools
 
     # Language servers
-    zls clangd
+    zls
+    nixd
 
     # Libs
     openssl
     openssl.dev
 
     # Shell utils
-    fzf ripgrep direnv unzip doas file
-    neofetch xclip pkg-config
+    fzf
+    ripgrep
+    direnv
+    unzip
+    doas
+    file
+    neofetch
+    xclip
+    pkg-config
 
     # Text editors
-    neovim neovide vscode
+    neovim
+    neovide
+    vscode
 
     firefox
     discord
@@ -128,7 +146,7 @@
 
   programs.starship = {
     enable = true;
-    settings = {};
+    settings = { };
   };
 
   # Nicely reload system units when changing configs
