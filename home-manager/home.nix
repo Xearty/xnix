@@ -61,11 +61,12 @@
 
   home.packages = with pkgs; [
     # Compilers, VMs, builds systems
-    rustup nim gcc llvm libllvm zig ghc ocaml
+    rustup nim llvm clang libllvm zig ghc ocaml
     gnumake cmake
+    clang-tools
 
     # Language servers
-    zls
+    zls clangd
 
     # Libs
     openssl
