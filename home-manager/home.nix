@@ -72,6 +72,7 @@
     gnumake
     cmake
     clang-tools
+    go
 
     # Language servers
     zls
